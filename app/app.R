@@ -107,7 +107,7 @@ dissemination_categories <- c(
   "Otro"
 )
 
-context_choices <- c("Nacional", "Internacional", "Ambos")
+context_choices <- c("Nacional", "Internacional")
 
 format_choices <- c(
   "Presencial", "En línea", "Híbrido",
