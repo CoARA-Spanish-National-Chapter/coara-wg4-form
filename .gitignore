@@ -1,0 +1,6 @@
+app/google-service-account.json
+secret_base64.txt
+STATUS.md
+deploy.R
+app/rsconnect/
+.DS_Store
