@@ -136,8 +136,13 @@ null_to_empty <- function(x) {
 # UI
 # =============================================================================
 
+# CoARA National Chapter (Spain) brand palette, sampled from the logo:
+#   orange  #E07030  (magnifying-glass mark; primary)
+#   gold    #F0B050  (sun rays / "España")
+#   red     #C01F2A  ("Spain")
+#   charcoal #2A2A2A ("CoARA National Chapter" wordmark)
 section_style <- paste0(
-  "color: white; background-color: #2E4A7A; ",
+  "color: white; background-color: #2A2A2A; ",
   "padding: 10px 15px; border-radius: 5px;"
 )
 
@@ -149,19 +154,35 @@ ui <- page_navbar(
   ),
   theme = bs_theme(
     version = 5,
-    primary = "#2E4A7A",
-    secondary = "#6B5B95",
+    primary = "#E07030",
+    secondary = "#C01F2A",
     font_scale = 0.95,
-    "navbar-bg" = "#2E4A7A"
+    "navbar-bg" = "#E07030"
   ),
   header = tagList(
     useShinyjs(),
     tags$head(tags$style(HTML("
+      .navbar { border-bottom: 3px solid #F0B050; }
+      .coara-logo-banner {
+        text-align: center;
+        padding: 18px 15px 6px 15px;
+      }
+      .coara-logo-banner img {
+        max-width: 360px; width: 100%; height: auto;
+      }
       @media (max-width: 767px) {
         .container-fluid { padding-left: 15px; padding-right: 15px; }
         .navbar-brand { font-size: 0.9rem; }
+        .coara-logo-banner img { max-width: 260px; }
       }
-    ")))
+    "))),
+    div(
+      class = "coara-logo-banner",
+      tags$img(
+        src = "coara-logo.png",
+        alt = "CoARA National Chapter - Spain Espana"
+      )
+    )
   ),
 
   # -- Tab: Formulario --------------------------------------------------------
