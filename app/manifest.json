@@ -1446,7 +1446,10 @@
   },
   "files": {
     "app.R": {
-      "checksum": "02bf0e4e3b7d9222e246195b6c02d4ba"
+      "checksum": "eaa6c798691ea833b1f6a3bc7f239115"
+    },
+    "www/coara-logo.png": {
+      "checksum": "0b815f352196017d11e4e119909410c6"
     }
   },
   "users": null

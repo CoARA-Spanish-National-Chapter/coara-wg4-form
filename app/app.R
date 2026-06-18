@@ -142,8 +142,8 @@ null_to_empty <- function(x) {
 #   red     #C01F2A  ("Spain")
 #   charcoal #2A2A2A ("CoARA National Chapter" wordmark)
 section_style <- paste0(
-  "color: white; background-color: #2A2A2A; ",
-  "padding: 10px 15px; border-radius: 5px;"
+  "color: #2A2A2A; border-left: 4px solid #E07030; ",
+  "padding: 2px 0 2px 14px; margin: 6px 0 18px 0; font-weight: 600;"
 )
 
 ui <- page_navbar(
@@ -154,26 +154,51 @@ ui <- page_navbar(
   ),
   theme = bs_theme(
     version = 5,
-    primary = "#E07030",
+    primary = "#C75B22",
     secondary = "#C01F2A",
+    base_font = font_google("Public Sans", local = FALSE),
+    heading_font = font_google("Fraunces", local = FALSE),
     font_scale = 0.95,
-    "navbar-bg" = "#E07030"
+    "navbar-bg" = "#FFFFFF",
+    "body-bg" = "#FAF6F0"
   ),
   header = tagList(
     useShinyjs(),
     tags$head(tags$style(HTML("
-      .navbar { border-bottom: 3px solid #F0B050; }
-      .coara-logo-banner {
-        text-align: center;
-        padding: 18px 15px 6px 15px;
+      body::before {
+        content: ''; position: fixed; top: 0; left: 0; right: 0;
+        height: 4px; z-index: 1080;
+        background: linear-gradient(90deg, #C01F2A 0%, #E07030 50%, #F0B050 100%);
       }
-      .coara-logo-banner img {
-        max-width: 360px; width: 100%; height: auto;
+      .navbar {
+        border-bottom: 2px solid #F0B050;
+        box-shadow: 0 1px 10px rgba(42, 42, 42, 0.05);
       }
+      .navbar .nav-link.active, .navbar .nav-link:hover { color: #C75B22 !important; }
+      .coara-logo-banner { text-align: center; padding: 24px 15px 2px; }
+      .coara-logo-banner img { max-width: 320px; width: 100%; height: auto; }
+      .coara-card {
+        background: #ffffff; border: 1px solid #efe6da; border-radius: 14px;
+        box-shadow: 0 8px 30px rgba(199, 91, 34, 0.07);
+        max-width: 820px; margin: 8px auto 52px; padding: 28px 32px 36px;
+      }
+      .btn-primary {
+        background-color: #E07030; border-color: #E07030;
+        font-weight: 600; letter-spacing: 0.3px;
+      }
+      .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: #C75B22 !important; border-color: #C75B22 !important;
+      }
+      .form-control:focus, .form-select:focus, .selectize-input.focus {
+        border-color: #E07030;
+        box-shadow: 0 0 0 0.18rem rgba(224, 112, 48, 0.18);
+      }
+      a { color: #C75B22; }
       @media (max-width: 767px) {
         .container-fluid { padding-left: 15px; padding-right: 15px; }
         .navbar-brand { font-size: 0.9rem; }
-        .coara-logo-banner img { max-width: 260px; }
+        .coara-logo-banner img { max-width: 240px; }
+        .coara-card { padding: 18px 16px 26px; border-radius: 10px; }
       }
     "))),
     div(
@@ -191,8 +216,7 @@ ui <- page_navbar(
     icon = icon("clipboard-list"),
 
     div(
-      class = "container-fluid",
-      style = "max-width: 800px; margin: auto; padding-top: 20px;",
+      class = "container-fluid coara-card",
 
       # Section A: Datos institucionales
       h4("Datos institucionales", style = section_style),
@@ -338,8 +362,7 @@ ui <- page_navbar(
     icon = icon("circle-question"),
 
     div(
-      class = "container-fluid",
-      style = "max-width: 800px; margin: auto; padding-top: 20px;",
+      class = "container-fluid coara-card",
       h4("Instrucciones", style = section_style),
       h5("Objetivo"),
       p(
